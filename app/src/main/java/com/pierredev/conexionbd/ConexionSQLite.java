@@ -50,6 +50,17 @@ public class ConexionSQLite extends SQLiteOpenHelper {
                 "FOREIGN KEY (cod_cli1) REFERENCES " + TABLE_CLIENTE + "(cod_cli)," +
                 "FOREIGN KEY (cod_fact1) REFERENCES " + TABLE_FACTURA + "(cod_fact))");
 
+        FerreteriaDB.execSQL("CREATE TABLE " + TABLE_PRODUCTO + "(" +
+                "cod_prod INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "fabricante TEXT," +
+                "valor REAL)");
+
+        FerreteriaDB.execSQL("CREATE TABLE " + TABLE_PED_PROD + "(" +
+                "cod_ped1 INTEGER," +
+                "cod_prod1 INTEGER," +
+                "FOREIGN KEY (cod_ped1) REFERENCES " + TABLE_PEDIDO + "(cod_ped)," +
+                "FOREIGN KEY (cod_prod1) REFERENCES " + TABLE_PRODUCTO + "(cod_prod))");
+
     }
 
 //  Metodo para actualizar Bd
